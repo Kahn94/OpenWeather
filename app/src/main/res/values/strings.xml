@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">OpenWeather</string>
+
+    <string name="latitude">Ширина*</string>
+    <string name="longitude">Долгота*</string>
+    <string name="send">Отправить</string>
+    <string name="null_data">Нет данных по этим координатам</string>
+    <string name="hint">*Ширина и долгота имеют значения от -90.00 до 90.00. Дробные значения должны быть разделены точкой</string>
+    <string name="latitude_error">Значения должны быть от -90 до 90. Дробная часть через точку</string>
+    <string name="longitude_error">Значения должны быть от -90 до 90. Дробная часть через точку</string>
+    <string name="key">538b691bc2913af9cc3292f8d3d06a17</string>
+</resources>

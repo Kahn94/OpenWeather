@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_coordinate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+
+        <EditText
+            android:id="@+id/et_latitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/latitude"
+            android:background="@drawable/et_shape" />
+
+        <EditText
+            android:id="@+id/et_longitude"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:gravity="center_horizontal"
+            android:hint="@string/longitude"
+            android:background="@drawable/et_shape" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:textSize="12sp"
+            android:text="@string/hint" />
+
+        <Button
+            android:id="@+id/bt_send"
+            android:layout_width="130dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:text="@string/send"
+            android:textColor="@color/colorWhite"
+            android:textSize="12sp"
+            android:background="@drawable/bt_shape"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_coordinate"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/null_data">
+        </TextView>
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main_list_city"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_coordinate">
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>
