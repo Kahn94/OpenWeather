@@ -16,10 +16,9 @@ import ru.kahn.openweather.model.ModelListCity
 import ru.kahn.openweather.model.ModelWeatherMain
 import java.util.ArrayList
 
-class ActivityMain : AppCompatActivity() {
-    var arrayListCity: List<ModelListCity> = ArrayList()
-    var adapter: AdapterMain =
-        AdapterMain(arrayListCity)
+class ActivityMain : AppCompatActivity(), AdapterMain.ClickListener {
+    var arrayListCity: MutableList<ModelListCity> =  mutableListOf()
+    var adapter: AdapterMain = AdapterMain(arrayListCity, this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +32,11 @@ class ActivityMain : AppCompatActivity() {
                 responseWeather()
             }
         }
+    }
+
+    override fun onLongClick(position: Int) {
+        adapter.arrayListCity.removeAt(position)
+        adapter.notifyDataSetChanged()
     }
 
     private fun responseWeather() {

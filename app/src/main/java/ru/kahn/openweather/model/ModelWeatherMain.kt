@@ -4,7 +4,7 @@ data class ModelWeatherMain (
     val message : String,
     val cod : String,
     val count : Int,
-    val list : List<ModelListCity>
+    val list : MutableList<ModelListCity>
 )
 
 data class ModelListCity (

@@ -10,10 +10,10 @@ import kotlinx.android.synthetic.main.item_card_city.view.*
 import ru.kahn.openweather.model.ModelListCity
 import ru.kahn.openweather.R
 
-class AdapterMain(arrayListCity: List<ModelListCity>) : RecyclerView.Adapter<AdapterMain.ViewHolder>() {
-    var arrayListCity: List<ModelListCity>?
-    init {
-        this.arrayListCity = arrayListCity
+class AdapterMain(var arrayListCity: MutableList<ModelListCity>, var click: ClickListener) : RecyclerView.Adapter<AdapterMain.ViewHolder>() {
+
+    interface ClickListener {
+        fun onLongClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -22,14 +22,12 @@ class AdapterMain(arrayListCity: List<ModelListCity>) : RecyclerView.Adapter<Ada
     }
 
     override fun getItemCount(): Int {
-        return if (arrayListCity == null) {
-            0
-        } else arrayListCity!!.size
+        return arrayListCity.size
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val model: ModelListCity = arrayListCity!![position]
+        val model: ModelListCity = arrayListCity[position]
         val imagePath = "http://openweathermap.org/img/wn/${model.weather[0].icon}@4x.png"
         Picasso.with(holder.itemView.context)
             .load(imagePath)
@@ -37,6 +35,10 @@ class AdapterMain(arrayListCity: List<ModelListCity>) : RecyclerView.Adapter<Ada
             .into(holder.itemView.image_item_weather)
         holder.itemView.tv_item_gradus.setText("${model.main.temp}\u2103")
         holder.itemView.tv_item_city.setText(model.name)
+        holder.itemView.setOnLongClickListener {
+            click.onLongClick(position)
+            false
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
